@@ -1,0 +1,35 @@
+# Intro
+
+gettext-mini is a clone of gettext-tiny but made with autotools.
+
+** PROJECT STATUS: unstable, porting in progress **
+
+Original source: https://github.com/AdelieLinux/gettext-tiny
+
+Just like gettext-tiny, this is a lightweight replacement for GNU's
+`gettext`, which is incredibly bloated and takes a lot of time to 
+build (in the order of an hour on slow devices). The most notable 
+component is `msgfmt` which is used to create binary translation files 
+in the .mo format out of textual input files in .po format. this is 
+the most important tool for building software from source, because 
+it is used from the build processes of many software packages.
+
+Unlike the GNU implementation of `msgfmt`, this project's implementation
+can expand input strings containing so-called sysdep strings into a 
+constant translation table. sysdep strings were glued as an 
+after-thought onto the GNU implementation to deal with system-specific 
+format strings, and in the GNU implementation those are created at 
+runtime, which requires mapping the entire .mo file into read/write 
+memory locations, thereby wasting precious RAM for read-only data 
+that could otherwise be shared among processes. 
+
+Other parts of gettext-mini such as xgettext and msgmerge are still 
+stubs, but they are sufficient to build many packages.
+
+This project is geared for Muls Libc, so `libintl` will be a compat
+library providing a few compatibility symbols meant to be used 
+together with the libintl built-in into recent musl versions. the 
+compatibility symbols help to get past configure scripts that 
+insist on using only the GNU gettext suite. additionally, it can 
+be entirely disabled.
+
