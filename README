@@ -26,7 +26,7 @@ that could otherwise be shared among processes.
 Other parts of gettext-mini such as xgettext and msgmerge are still 
 stubs, but they are sufficient to build many packages.
 
-This project is geared for Muls Libc, so `libintl` will be a compat
+This project is geared for musl libc, so `libintl` will be a compat
 library providing a few compatibility symbols meant to be used 
 together with the libintl built-in into recent musl versions. the 
 compatibility symbols help to get past configure scripts that 
